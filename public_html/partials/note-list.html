@@ -1,0 +1,25 @@
+<!-- wyszukiwanie notatki po nazwie -->
+
+<div  class="jumbotron">
+    <div class="form-group">
+        <h3>Wyszukaj notatkę: </h3>
+        <input type='text' class="form-control">
+    </div>
+    <div  >
+        <div href="#/notes/{{note.id}}"  ng-repeat="note in notes" class="panel panel-default">
+            <div class="panel-heading">
+               
+                <button class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-trash center-block" ></span></button>
+                
+                <span class="glyphicon glyphicon-star"></span> <!-- jQuery dodac gwiazdke -->
+                <span style="margin-left: 10px">{{note.title}}</span>
+            </div>
+            <div class="panel-body">{{note.description}}</div>
+        </div>
+        <ul class="pagination">
+            <li class="previous btn-info"><a href="#">Previous</a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            <li class="next"><a href="#">Next</a></li>
+        </ul>
+    </div>
+</div>

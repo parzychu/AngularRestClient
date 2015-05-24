@@ -1,0 +1,40 @@
+<!-- wyszukiwanie notatki po nazwie -->
+
+<div  class=" col-md-12">
+    <div class="jumbotron">
+    <h1 class="page-header">Utwórz notatkę:</h1>
+    </div>
+    <form class="col-md-12 jumbotron">
+
+        <!-- wyszukiwanie notatki po tagach checkbox-->
+        <div class="form-group col-md-6 col-md-offset-1"> 
+            <h3><label> Tag:</label></h3>
+            <div class="checkbox"  >
+                <label ng-repeat="tag in tags" class="checkbox-inline">
+                    <input type="checkbox" value="{{tag}}">#{{tag}}
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-5">
+            <h3><label>Kategoria:</label></h3>
+            <!--wyszukiwanie notatki po kategorii select-->
+            <div class="form-group">    
+                <select id="categories" class="form-inline">
+                    <option ng-repeat="cat in categories" value="{{cat}}" >{{cat}}</option>
+                </select>
+            </div> 
+        </div>
+        <div class="form-group col-md-10 col-md-offset-1">
+            <h3><label>Temat:</label></h3>
+            <input type="text" ng-required class="form-control">
+            <h3><label>Tekst:</label></h3>
+            <textarea class="form-control" style="resize: none; height: 300px"> </textarea>
+        </div>
+        <div class="form-group col-md-12" style="margin-top: 30px">
+            <button type="button" class="btn btn-info btn-block btn-sm">
+                <span class="glyphicon glyphicon-search"> </span> Dodaj
+            </button>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,20 @@
+
+<div class="jumbotron">
+        <h1 class="page-header">Sprawdź serwer: </h1>
+    </div>
+<div class="col-md-12 jumbotron">
+    <h3 style="margin-bottom: 20px">Sprawdź serwer</h3>
+    <div class="col-md-12" style="margin-bottom: 20px">
+        <input type="irl" list="servers" ng-model="url" class="form-inline, col-md-10">
+        <datalist id="servers">
+            <option ng-repeat="ser in servers">{{ser.name}}</option>
+        </datalist>
+        <button ng-click="check()" class="btn-xs, btn-default, col-md-2">Check server</button>
+    </div>
+    <div class="col-md-12">
+    <div class="alert alert-success">
+        <p>Status serwera: {{status}}</p>
+        <p>{{message}}</p>
+    </div> <!-- jQuery alert style-->  
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="jumbotron">
+    <h1 class="page-header">Moje notatki</h1>
+</div>
+
+<aside class="col-md-3">
+    <form role="form" >
+
+        <!-- wyszukiwanie notatki po tagach checkbox-->
+        <h3>Tag:</h3>
+        <div ng-repeat="tag in tags" class="checkbox " style="margin-left: 10px"  >
+            <label >
+                <input type="checkbox" value="{{tag}}" >{{tag}}
+            </label>
+        </div>
+        <h3>Kategoria:</h3>
+        <!--wyszukiwanie notatki po kategorii select-->
+        <div class="form-group">    
+            <select id="categories" class="form-control">
+                <option ng-repeat="cat in categories" value="{{cat}}" >{{cat}}</option>
+            </select>
+        </div> 
+        <div class="form-group">
+            <button type="button" class="btn btn-info btn-block btn-sm">
+                <span class="glyphicon glyphicon-search"> </span> Szukaj
+            </button>
+        </div>
+    </form>
+
+</aside>
+<section class="col-md-9">
+    <div>
+    <ul class="nav nav-pills">
+        <li class="active"><a data-toggle="tab" href="#home">Notatki <span class="badge">{{lenght}}</span></a> </li>
+        <li><a data-toggle="tab" href="#menu1">Ważne</a></li>
+        <li><a ng-repeat data-toggle="tab" href="notes/:{{noteId}}">{{noteId}}</a></li>
+    </ul>
+</div>
+    <div ng-include="'partials/note-list.html'"></div> <!-- tak, to troche bez sensu -->
+</section>
