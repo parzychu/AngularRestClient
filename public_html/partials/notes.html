@@ -35,11 +35,14 @@ and open the template in the editor.
 </aside>
 <section class="col-md-9">
     <div>
-    <ul class="nav nav-pills">
-        <li class="active"><a data-toggle="tab" href="#home">Notatki <span class="badge">{{lenght}}</span></a> </li>
-        <li><a data-toggle="tab" href="#menu1">Ważne</a></li>
-        <li><a ng-repeat data-toggle="tab" href="notes/:{{noteId}}">{{noteId}}</a></li>
+    <ul class="nav nav-pills list-inline">
+        <li class="active" ng-click="changeTab('partials/note-list.html')"><a >Wszystkie <span class="badge">{{lenght}}</span></a> </li>
+        <li ><a href="" >Ważne</a></li>
+        <li ng-repeat="note in notesTab track by note.id" ng-click="changeTab('partials/note-detail.html')" >
+            <a href="" >{{note.title}}&nbsp;&nbsp; 
+        <span class="glyphicon glyphicon-trash center-block pull-right" ng-click='removeTab(note)'></span>
+        </a></li>
     </ul>
 </div>
-    <div ng-include="'partials/note-list.html'"></div> <!-- tak, to troche bez sensu -->
+    <div ng-include="currentTab"></div> <!-- tak, to troche bez sensu -->
 </section>

@@ -16,6 +16,7 @@ clientServices.factory('GetNoteList', ['$http', function($http) {
                         console.log("czy otrzymane dane to Lista:" + angular.isArray(data));
                         scope.status = status;
                         scope.notes = data['notes'];
+                        scope.lengh = scope.notes.lengh;
                     }).
                     error(function(data, status) {
                         scope.data = angular.fromJson(data);

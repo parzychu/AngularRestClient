@@ -3,11 +3,11 @@
 <div  class="jumbotron">
     <div class="form-group">
         <h3>Wyszukaj notatkę: </h3>
-        <input type='text' class="form-control">
+        <input type='text' class="form-control" ng-model="search">
     </div>
     <div  >
-        <div href="#/notes/{{note.id}}"  ng-repeat="note in notes" class="panel panel-default">
-            <div class="panel-heading">
+        <div href="#/notes/{{note.id}}"  ng-repeat="note in notes |searchNote:search" ng-dblclick="addTab(note)" class="panel panel-default">
+            <div class="panel-heading" ng-mouseover="">
                
                 <button class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-trash center-block" ></span></button>
                 
