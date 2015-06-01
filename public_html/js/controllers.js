@@ -5,36 +5,36 @@ clientControllers.controller('NoteListCtrl', ['$scope', '$http', 'Notes', 'Categ
         $scope.notes = Notes.notes;
         $scope.categories = Categories.categories;
 
-        $scope.deleteNote = function(note){
+        $scope.deleteNote = function(note) {
             Notes.deleteNote(note);
         };
         /*
-        $scope.previousDisabled = true;
-        $scope.limit = 20;
-        $scope.page = 0;
-        $scope.begin = $scope.limit * $scope.page;
-        $scope.pageArray = function(){
-            return new Array(Math.ceil(Notes.lengh()/$scope.limit));
-        };
-        $scope.setPage = function(index){
-            $scope.page = index;
-        };
-        $scope.nextPage = function(){
-            $scope.page++;
-        };
-        $scope.previousPage = function(){
-            $scope.page--;
-            if($scope.page === 0)$scope.previousDisabled = true;
-            else $scope.previousDisabled = false;
-        }
-        */   
+         $scope.previousDisabled = true;
+         $scope.limit = 20;
+         $scope.page = 0;
+         $scope.begin = $scope.limit * $scope.page;
+         $scope.pageArray = function(){
+         return new Array(Math.ceil(Notes.lengh()/$scope.limit));
+         };
+         $scope.setPage = function(index){
+         $scope.page = index;
+         };
+         $scope.nextPage = function(){
+         $scope.page++;
+         };
+         $scope.previousPage = function(){
+         $scope.page--;
+         if($scope.page === 0)$scope.previousDisabled = true;
+         else $scope.previousDisabled = false;
+         }
+         */
     }]);
-clientControllers.controller('StarCtrl', ['Notes', '$scope', function(Notes, $scope){
-        $scope.toggleTag = function(note){
+clientControllers.controller('StarCtrl', ['Notes', '$scope', function(Notes, $scope) {
+        $scope.toggleTag = function(note) {
             note.tag = !note.tag;
             Notes.editNote(note);
         };
-}]);
+    }]);
 clientControllers.controller('TabCtrl', ['$scope', '$timeout', 'Notes', function($scope, $timeout, Notes) {
         $scope.notesTab = [];
         $scope.importantTab = '!!';
@@ -75,19 +75,17 @@ clientControllers.controller('TabCtrl', ['$scope', '$timeout', 'Notes', function
         $scope.isCurrentTab = isCurrentTab;
 
         var removeTab = function(note) {
-           $timeout(function(){
-            $scope.notesTab.splice($scope.notesTab.indexOf(note), 1);
-            setCurrentTab('-1', 'partials/note-list.html');
+            $timeout(function() {
+                $scope.notesTab.splice($scope.notesTab.indexOf(note), 1);
+                setCurrentTab('-1', 'partials/note-list.html');
             }, 10);
         };
         $scope.removeTab = removeTab;
-        
-        $scope.editNote = function(note){          
+
+        $scope.editNote = function(note) {
             Notes.editNote(note);
             removeTab();
         };
-        
-       
     }]);
 
 clientControllers.controller('CategoryCtrl', ['$scope', function($scope) {
@@ -138,7 +136,7 @@ clientControllers.controller('CheckServerCtrl', ['$scope', '$http', 'ChceckServe
         $scope.status = '?';
         $scope.servers = Servers.servers;
         var check = CheckServer;
-        $scope.checkServer = function(){
+        $scope.checkServer = function() {
             console.log($scope.selected);
             check($scope.selected, $scope);
         };

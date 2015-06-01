@@ -5,10 +5,10 @@
         <h3>Wyszukaj notatkę: </h3>
         <input type='text' class="form-control" ng-model="search">
     </div>
-    <div  >
-        <div href="#/notes/{{note.id}}"  ng-repeat="note in notes | filter:{category:currentCategory} |searchNote:search | filter:{tag:importantTab}" class="panel panel-default">
+    <div>
+        <div href="#/notes/{{note.id}}"  ng-repeat="note in notes| filter:{category:currentCategory} |searchNote:search | filter:{tag:importantTab}" class="panel panel-default">
             <div class="panel-heading" ng-mouseover="">
-               
+
                 <button class="btn btn-danger btn-sm pull-right" ng-click="deleteNote(note)" style="margin-left: 10px"><span class="glyphicon glyphicon-trash center-block" ></span></button>
                 <button class="btn btn-primary btn-sm pull-right" ng-click="addTab(note)" ><span class="glyphicon glyphicon-edit center-block" ></span></button>
                 <star></star>
@@ -17,7 +17,6 @@
             <div class="panel-body">{{note.description}}</div>
         </div>
         <!--
-        {{page}} + fdafsfdas
         <ul class="pagination">
             <li ng-hide="previousDisabled" class="previous btn-info" ng-click="previousPage()"><a href="">Previous</a></li>
             <li ng-repeat="i in pageArray() track by $index" ng-click="setPage($index)" class="active"><a href=""  >{{$index + 1}} <span class="sr-only">(current)</span></a></li>
