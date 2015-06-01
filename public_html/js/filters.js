@@ -19,6 +19,6 @@ clientFilters.filter('searchNote', function(){
         });
         return filtered;
     }
-}); 
+});
 
 

@@ -1,0 +1,26 @@
+<div>
+    <form class="col-md-12 jumbotron" ng-submit="editNote(currentNote)">        
+        <div class="form-group col-md-4 col-md-offset-1">
+            <label>Kategoria:</label>
+            <!--wyszukiwanie notatki po kategorii select-->
+            <div class="form-group">    
+                <select id="categories" ng-model="currentNote.category" class="form-control">
+                    <option selected value="currentNote.category">{{currentNote.category}}</option> 
+                    <option ng-repeat="cat in categories" value="{{cat}}" >{{cat}}</option>
+                </select>
+            </div> 
+        </div>
+        <div class="form-group col-md-10 col-md-offset-1">
+            <label>Temat:</label>
+            <input type="text" class="form-control" ng-model="currentNote.title" required>
+        </div>
+        <div class="form-group col-md-10 col-md-offset-1">
+            <label>Tekst:</label>
+            <textarea class="form-control" style="resize: none; height: 300px" ng-model="currentNote.description" required>{{currentNote.description}} </textarea>
+        </div>
+        <div class="form-group col-md-10 col-md-offset-1" style="margin-top: 30px">
+            <button type="submit" class="btn btn-info btn-lg">Edytuj</button>
+            <button type="button" class="btn btn-default btn-lg pull-right" ng-click="removeTab(currentNote)">Anuluj</button>
+        </div>
+    </form>
+</div>

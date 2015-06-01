@@ -11,13 +11,8 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <script src="js/ang/angular.js"></script>
-        <script src="js/jquery.js"></script>
-        <script src="js/ang/angular-route.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/controllers.js"></script>
-        <script src="js/filters.js"></script>
-        <script src="js/services.js"></script>
+
+
     </head>
     <body>
         <nav class="col-md-12 navbar-inverse navbar-fixed-top ">
@@ -26,22 +21,29 @@ and open the template in the editor.
                     <a class="navbar-brand" href="#/notes">Moje notatki</a>
                 </div>
                 <div>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a data-toggle="tab" href="#/notes">Notatki</a></li>
+                    <ul class="nav navbar-nav">              
+                        <li><a data-toggle="tab" href="#/notes">Notatki</a></li>
                         <li><a data-toggle="tab" href="#/notes/new">Utwórz</a></li>
                         <li><a data-toggle="tab" href="#/server">Sprawdź serwer</a></li> 
                     </ul>
-                    <a href="" class="btn btn-info navbar-btn navbar-right">Pobierz notatki </a>
                 </div>
             </div>
         </nav>
-
         <div ng-view class="container"> </div>
-        <div class="container"><footer class="col-md-12"> 
+        <div class="container">
+            <footer class="col-md-12"> 
                 <p class="text-right">
-                prosta stopka
-              
-            </p></footer>
-            </div>
+                    prosta stopka
+                </p>
+            </footer>
+        </div>
+        <script src="js/lib/angular.js"></script>
+        <script src="js/lib/jquery.js"></script>
+        <script src="js/lib/angular-route.js"></script><script src="js/directives.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/filters.js"></script>
+        <script src="js/services.js"></script>
     </body>
+
 </html>

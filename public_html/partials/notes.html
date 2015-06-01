@@ -4,45 +4,35 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<div class="jumbotron">
+<div class="col-md-12  jumbotron">
     <h1 class="page-header">Moje notatki</h1>
 </div>
-
-<aside class="col-md-3">
-    <form role="form" >
-
-        <!-- wyszukiwanie notatki po tagach checkbox-->
-        <h3>Tag:</h3>
-        <div ng-repeat="tag in tags" class="checkbox " style="margin-left: 10px"  >
-            <label >
-                <input type="checkbox" value="{{tag}}" >{{tag}}
-            </label>
+<div ng-controller="CategoryCtrl"> 
+    <div class="col-md-3 row">
+        <div class="row" >
+            <div class="sidebar col-md-11">
+                <h3>Kategorie:</h3>
+                <ul class="nav nav-pills nav-stacked" >  
+                    <li ng-class="{'active':isCurrentCategoryNull()}"><a  href="" ng-click="setCurrentCategory('!!')"> wszystkie </a></li>
+                    <li hide-me ng-repeat="category in categories" ng-class="{'active':isCurrentCategory(category)}">
+                        <a href="" ng-click="setCurrentCategory(category)">{{category}}</a>
+                    </li>  
+                </ul> 
+            </div>
         </div>
-        <h3>Kategoria:</h3>
-        <!--wyszukiwanie notatki po kategorii select-->
-        <div class="form-group">    
-            <select id="categories" class="form-control">
-                <option ng-repeat="cat in categories" value="{{cat}}" >{{cat}}</option>
-            </select>
-        </div> 
-        <div class="form-group">
-            <button type="button" class="btn btn-info btn-block btn-sm">
-                <span class="glyphicon glyphicon-search"> </span> Szukaj
-            </button>
-        </div>
-    </form>
+    </div>
+    <section class="col-md-9">
+        <div ng-controller="TabCtrl">
+            <h3>Notatki:</h3>
+            <ul class="nav nav-pills list-inline">
+                <li ng-class="{'active':isCurrentTab('-1')}" ng-click="setCurrentTab('-1', 'partials/note-list.html'); setIfImportantTab('!!')"><a >Wszystkie <span class="badge">{{lenght}}</span></a> </li>
+                <li ng-class="{'active':isCurrentTab(0)}"><a href="" ng-click= "setIfImportantTab(true); setCurrentTab(0, 'partials/note-list.html')">Ważne</a></li>
+                <li ng-repeat="note in notesTab track by note.id" ng-click="setCurrentNote(note); setCurrentTab(note.id, 'partials/note-edit.html'); setIfImportantTab('!!')" ng-class={"active":isCurrentTab({{note.id}})}  >
+                    <a href="" >Edytuj: {{::note.title}}&nbsp;&nbsp; 
+                        <span class="glyphicon glyphicon-remove center-block pull-right" ng-click="removeTab(note)"></span>
+                    </a></li>
+            </ul>
 
-</aside>
-<section class="col-md-9">
-    <div>
-    <ul class="nav nav-pills list-inline">
-        <li class="active" ng-click="changeTab('partials/note-list.html')"><a >Wszystkie <span class="badge">{{lenght}}</span></a> </li>
-        <li ><a href="" >Ważne</a></li>
-        <li ng-repeat="note in notesTab track by note.id" ng-click="changeTab('partials/note-detail.html')" >
-            <a href="" >{{note.title}}&nbsp;&nbsp; 
-        <span class="glyphicon glyphicon-trash center-block pull-right" ng-click='removeTab(note)'></span>
-        </a></li>
-    </ul>
+            <div ng-include="currentUrl"></div> <!-- tak, to troche bez sensu -->
+        </div>
 </div>
-    <div ng-include="currentTab"></div> <!-- tak, to troche bez sensu -->
-</section>

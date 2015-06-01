@@ -1,15 +1,20 @@
 
-<div class="jumbotron">
+
+
+<div class="jumbotron col-md-12 ">
         <h1 class="page-header">Sprawdź serwer: </h1>
     </div>
+<div>
+    
+</div>
 <div class="col-md-12 jumbotron">
     <h3 style="margin-bottom: 20px">Sprawdź serwer</h3>
     <div class="col-md-12" style="margin-bottom: 20px">
-        <input type="url" list="servers" ng-model="url" class="form-inline, col-md-10">
-        <datalist id="servers">
-            <option ng-repeat="ser in servers">{{ser.name}}</option>
+        <input type="text" list="servers" ng-model="selected" class="form-inline col-md-10">
+        <datalist id="servers" >
+            <option ng-repeat="ser in servers">{{ser}}</option>
         </datalist>
-        <button ng-click="check()" class="btn-xs, btn-default, col-md-2">Check server</button>
+        <button ng-click="checkServer()" class="btn-xs, btn-default, col-md-2">Check server</button>
     </div>
     <div class="col-md-12">
     <div class="alert alert-success">
@@ -18,9 +23,3 @@
     </div> <!-- jQuery alert style-->  
     </div>
 </div>
-<div ng-class="color" class="colorful">
-  this box is moody
-</div>
-<button ng-click="color='red'">Change to red</button>
-<button ng-click="color='blue'">Change to blue</button>
-<button ng-click="color='green'">Change to green</button>

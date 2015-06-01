@@ -7,16 +7,12 @@ angularClient.config(['$routeProvider', function($routeProvider) {
         $routeProvider.
                 when('/server', {
                     templateUrl: 'partials/check-server.html',
-                    controller: 'CheckAppCtrl'
+                    controller: 'CheckServerCtrl'
                 }).
                 when('/notes', {
                     templateUrl: 'partials/notes.html',
                     controller: 'NoteListCtrl'
                 }).
-       /*         when('/notes/:noteId', {
-                    templateUrl: 'partials/note-detail.html',
-                    controller: 'NoteDetailCtrl'
-                }).*/
                 when('/notes/new', {
                     templateUrl: 'partials/new-note.html',
                     controller: 'NewNoteCtrl'

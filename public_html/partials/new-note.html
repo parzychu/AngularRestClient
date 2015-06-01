@@ -1,40 +1,49 @@
 <!-- wyszukiwanie notatki po nazwie -->
 
-<div  class=" col-md-12">
-    <div class="jumbotron">
-    <h1 class="page-header">Utwórz notatkę:</h1>
+<div >
+    <div class="jumbotron col-md-8 col-md-offset-2">
+        <h1 class="page-header">Utwórz notatkę:</h1>
     </div>
-    <form class="col-md-12 jumbotron">
+    <form name="myForm" class="create-form jumbotron col-md-8 col-md-offset-2" role="form" ng-submit="addNewNote(newNote)">
+        <div class="form-group chceckbox">
+            <label for="newNote.tag">Ważne
+                <input type="checkbox" ng-model="newNote.tag">
+            </label>
+        </div>
 
-        <!-- wyszukiwanie notatki po tagach checkbox-->
-        <div class="form-group col-md-6 col-md-offset-1"> 
-            <h3><label> Tag:</label></h3>
-            <div class="checkbox"  >
-                <label ng-repeat="tag in tags" class="checkbox-inline">
-                    <input type="checkbox" value="{{tag}}">#{{tag}}
-                </label>
+        <div class="form-group">
+            <label for="newNote.category">Kategoria</label>
+            <div class="input-group">
+                <select name="newNote.category" id="newNoteCategory" ng-options="cat for cat in categories" 
+                        ng-model="newNote.category" class="form-control" required>
+                </select>
+                <span class="input-group-btn">
+                    <button ng-hide="addCategoryInput" class="btn btn-default" type="button" ng-click="addCategoryInput = true">Dodaj nową</button>
+                    <button ng-show="addCategoryInput" class="btn btn-default" type="button" ng-click="addCategoryInput = false">Anuluj</button>
+                </span>
             </div>
         </div>
-        <div class="form-group col-md-5">
-            <h3><label>Kategoria:</label></h3>
-            <!--wyszukiwanie notatki po kategorii select-->
-            <div class="form-group">    
-                <select id="categories" class="form-inline">
-                    <option ng-repeat="cat in categories" value="{{cat}}" >{{cat}}</option>
-                </select>
-            </div> 
+        <div ng-show="addCategoryInput"  class="form-group">
+            <label for="newCategory">Dodaj kategorię</label>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="newCategory">
+                
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="addNewCategory(newCategory)" type="button">Dodaj</button>
+                </span>
+            </div>
         </div>
-        <div class="form-group col-md-10 col-md-offset-1">
-            <h3><label>Temat:</label></h3>
-            <input type="text" ng-required class="form-control">
-            <h3><label>Tekst:</label></h3>
-            <textarea class="form-control" style="resize: none; height: 300px"> </textarea>
+        <div class="form-group">
+            <label for="newNote.title">Tytuł</label>
+            <input type="text" name="newNoteTitle" required class="form-control" id="newNoteTitle" ng-model="newNote.title">
+            
         </div>
-        <div class="form-group col-md-12" style="margin-top: 30px">
-            <button type="button" class="btn btn-info btn-block btn-sm">
-                <span class="glyphicon glyphicon-search"> </span> Dodaj
-            </button>
+        <div class="form-group">
+            <label for="newNote.content">Treść</label>
+            <textarea class="form-control" required id="newNoteDescription" ng-model="newNote.description" style="resize: none; height: 200px"></textarea>
         </div>
+        <button type="submit" class="btn btn-info btn-lg">Wyślij</button>
+        <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancel()">Anuluj</button>
     </form>
 
 </div>
